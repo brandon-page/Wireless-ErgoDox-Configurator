@@ -20,7 +20,7 @@ class _ConfigScreenState extends State<ConfigScreen> {
   final changeNotifier = StreamController.broadcast();
   HashMap<String, GlobalKey<KeyBoxButtonState>> keyMap = HashMap<String, GlobalKey<KeyBoxButtonState>>();
   late List<CommandBox> commandBoxes;
-  var alphaList = ["A", "B", "C", "D", "E"];
+  var alphaList = ["A", "B", "C", "D", "E", "F"];
   var numList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"];
 
   _ConfigScreenState() {
@@ -52,7 +52,6 @@ class _ConfigScreenState extends State<ConfigScreen> {
     // final Size size = MediaQuery.of(context).size;
     const leftThumbClusterAngle = (20 * 3.1415) / 180;
     const rightThumbClusterAngle = (340 * 3.1415) / 180;
-    // GlobalKey<KeyBoxButtonState>().currentState?.text;
 
     return Scaffold(
       appBar: AppBar(
@@ -73,7 +72,7 @@ class _ConfigScreenState extends State<ConfigScreen> {
                 }
                 print(keyMapString);
               },
-              child: Text("Test button")
+              child: const Text("Test button")
           )
         ],
       ),
@@ -112,10 +111,15 @@ class _ConfigScreenState extends State<ConfigScreen> {
                                 child: Row(children: [const Padding(padding: EdgeInsets.only(right: 64.5)), KeyBoxButton(keyMap["E1"]!, changeNotifier.stream), KeyBoxButton(keyMap["E2"]!, changeNotifier.stream), KeyBoxButton(keyMap["E3"]!, changeNotifier.stream), KeyBoxButton(keyMap["E4"]!, changeNotifier.stream), KeyBoxButton(keyMap["E5"]!, changeNotifier.stream)])),
 
                             // Thumb Cluster
-                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(406, 100, 0)..rotateZ(leftThumbClusterAngle), child: Row(children: [KeyBox(''), KeyBox('')])),
-                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(330, 75, 0)..rotateZ(leftThumbClusterAngle), child: Row(children: [KeyBox('', height: 2), KeyBox('', height: 2),
-                              Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -25, 0), child: KeyBox('')),
-                              Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 27, 0), child: KeyBox(''))]))
+                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(250, 0, 0)..rotateZ(leftThumbClusterAngle), child: Row(children:
+                              [
+                                Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(163, -78, 0), child: Row(children: [KeyBoxButton(keyMap["F1"]!, changeNotifier.stream), KeyBoxButton(keyMap["F2"]!, changeNotifier.stream)])),
+                                Row(children: [
+                                  KeyBoxButton(keyMap["F3"]!, changeNotifier.stream, height: 2), KeyBoxButton(keyMap["F4"]!, changeNotifier.stream, height: 2),
+                                  Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -25, 0), child: KeyBoxButton(keyMap["F5"]!, changeNotifier.stream)),
+                                  Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 27, 0), child: KeyBoxButton(keyMap["F6"]!, changeNotifier.stream))
+                                ])]
+                            ))
                           ],
                         )
                     )
@@ -126,7 +130,7 @@ class _ConfigScreenState extends State<ConfigScreen> {
                         borderOnForeground: true,
                         // semanticContainer: true,
                         color: Colors.transparent,
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        // clipBehavior: Clip.antiAliasWithSaveLayer,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)
                         ),
@@ -136,25 +140,51 @@ class _ConfigScreenState extends State<ConfigScreen> {
                           // Left Half
                           children: [
                             const Padding(padding: EdgeInsets.all(20)),
-                            Row(children: const [Padding(padding: EdgeInsets.all(20)), KeyBox(""), KeyBox('6',), KeyBox('7'), KeyBox('8'), KeyBox('9'), KeyBox('0'), KeyBox('', width: 1.5)]),
+                            Row(mainAxisAlignment: MainAxisAlignment.end, children: [const Padding(padding: EdgeInsets.all(20)), KeyBoxButton(keyMap["A8"]!, changeNotifier.stream), KeyBoxButton(keyMap["A9"]!, changeNotifier.stream), KeyBoxButton(keyMap["A10"]!, changeNotifier.stream), KeyBoxButton(keyMap["A11"]!, changeNotifier.stream), KeyBoxButton(keyMap["A12"]!, changeNotifier.stream), KeyBoxButton(keyMap["A13"]!, changeNotifier.stream), KeyBoxButton(keyMap["A14"]!, changeNotifier.stream, width: 1.5)]),
                             Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -12.5, 0),
-                                child: Row(children: [Padding(padding: EdgeInsets.all(20)), Transform(child: KeyBox('', height: 1.6,), alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, 14.5, 0)),
-                                  KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox(''), KeyBox('', width: 1.5)])),
-                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(54, -25, 0),
-                                child: Row(children: const [Padding(padding: EdgeInsets.all(20)), KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox(''), KeyBox('', width: 1.5)])),
+                                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [const Padding(padding: EdgeInsets.all(20)), Transform(child: KeyBoxButton(keyMap["B8"]!, changeNotifier.stream, height: 1.6), alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, 14.5, 0)), KeyBoxButton(keyMap["B9"]!, changeNotifier.stream), KeyBoxButton(keyMap["B10"]!, changeNotifier.stream), KeyBoxButton(keyMap["B11"]!, changeNotifier.stream), KeyBoxButton(keyMap["B12"]!, changeNotifier.stream), KeyBoxButton(keyMap["B13"]!, changeNotifier.stream),
+                                  KeyBoxButton(keyMap["B14"]!, changeNotifier.stream, width: 1.5)])),
+                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -25, 0),
+                                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [const Padding(padding: EdgeInsets.all(20)), KeyBoxButton(keyMap["C8"]!, changeNotifier.stream), KeyBoxButton(keyMap["C9"]!, changeNotifier.stream), KeyBoxButton(keyMap["C10"]!, changeNotifier.stream), KeyBoxButton(keyMap["C11"]!, changeNotifier.stream), KeyBoxButton(keyMap["C12"]!, changeNotifier.stream), KeyBoxButton(keyMap["C13"]!, changeNotifier.stream, width: 1.5)])),
                             Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -37.5, 0),
-                                child: Row(children: [Padding(padding: EdgeInsets.all(20)), Transform(child: KeyBox('', height: 1.6), alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -14.5, 0)),
-                                  KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox(''), KeyBox('', width: 1.5)])),
+                                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [const Padding(padding: EdgeInsets.all(20)), Transform(child: KeyBoxButton(keyMap["D8"]!, changeNotifier.stream, height: 1.6), alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -14.5, 0)), KeyBoxButton(keyMap["D9"]!, changeNotifier.stream), KeyBoxButton(keyMap["D10"]!, changeNotifier.stream), KeyBoxButton(keyMap["D11"]!, changeNotifier.stream), KeyBoxButton(keyMap["D12"]!, changeNotifier.stream), KeyBoxButton(keyMap["D13"]!, changeNotifier.stream),
+                                  KeyBoxButton(keyMap["D14"]!, changeNotifier.stream, width: 1.5)])),
                             Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(1, -50, 0),
-                                child: Row(children: const [Padding(padding: EdgeInsets.only(right: 146.5)), KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox('')])),
+                                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [const Padding(padding: EdgeInsets.only(right: 64.5)), KeyBoxButton(keyMap["E8"]!, changeNotifier.stream), KeyBoxButton(keyMap["E9"]!, changeNotifier.stream), KeyBoxButton(keyMap["E10"]!, changeNotifier.stream), KeyBoxButton(keyMap["E11"]!, changeNotifier.stream), KeyBoxButton(keyMap["E12"]!, changeNotifier.stream)])),
 
                             // Thumb Cluster
-                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0 , -180, 0)..rotateZ(rightThumbClusterAngle), child: Row(children: [KeyBox(''), KeyBox('')])),
-                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -180, 0)..rotateZ(rightThumbClusterAngle), child: Row(children: [
-                              Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -25, 0), child: KeyBox('')),
-                              Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 27, 0), child: KeyBox('')),
-                              KeyBox('', height: 2), KeyBox('', height: 2)]))
+                            Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(100, -120, 0)..rotateZ(rightThumbClusterAngle), child: Row(children:
+                            [
+                              Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(108, -78, 0), child: Row(children: [KeyBoxButton(keyMap["F8"]!, changeNotifier.stream), KeyBoxButton(keyMap["F9"]!, changeNotifier.stream)])),
+                              Row(children: [
+                                Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -25, 0), child: KeyBoxButton(keyMap["F12"]!, changeNotifier.stream)),
+                                Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 27, 0), child: KeyBoxButton(keyMap["F13"]!, changeNotifier.stream)),
+                                Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 0, 0), child: KeyBoxButton(keyMap["F10"]!, changeNotifier.stream, height: 2)),
+                                Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 0, 0), child: KeyBoxButton(keyMap["F11"]!, changeNotifier.stream, height: 2)),
+                              ])]
+                            ))
                           ],
+                          // children: [
+                          //   const Padding(padding: EdgeInsets.all(20)),
+                          //   Row(mainAxisAlignment: MainAxisAlignment.start, children: const [Padding(padding: EdgeInsets.all(20)), KeyBox(""), KeyBox('6',), KeyBox('7'), KeyBox('8'), KeyBox('9'), KeyBox('0'), KeyBox('', width: 1.5)]),
+                          //   Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -12.5, 0),
+                          //       child: Row(children: [Padding(padding: EdgeInsets.all(20)), Transform(child: KeyBox('', height: 1.6,), alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, 14.5, 0)),
+                          //         KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox(''), KeyBox('', width: 1.5)])),
+                          //   Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(54, -25, 0),
+                          //       child: Row(children: const [Padding(padding: EdgeInsets.all(20)), KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox(''), KeyBox('', width: 1.5)])),
+                          //   Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -37.5, 0),
+                          //       child: Row(children: [Padding(padding: EdgeInsets.all(20)), Transform(child: KeyBox('', height: 1.6), alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -14.5, 0)),
+                          //         KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox(''), KeyBox('', width: 1.5)])),
+                          //   Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(1, -50, 0),
+                          //       child: Row(children: const [Padding(padding: EdgeInsets.only(right: 146.5)), KeyBox(""), KeyBox('',), KeyBox(''), KeyBox(''), KeyBox('')])),
+                          //
+                          //   // Thumb Cluster
+                          //   Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0 , -180, 0)..rotateZ(rightThumbClusterAngle), child: Row(children: [KeyBox(''), KeyBox('')])),
+                          //   Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -180, 0)..rotateZ(rightThumbClusterAngle), child: Row(children: [
+                          //     Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(0, -25, 0), child: KeyBox('')),
+                          //     Transform(alignment: FractionalOffset.center, transform: Matrix4.identity()..translate(-54, 27, 0), child: KeyBox('')),
+                          //     KeyBox('', height: 2), KeyBox('', height: 2)]))
+                          // ],
                         )
                     )
                 ),
